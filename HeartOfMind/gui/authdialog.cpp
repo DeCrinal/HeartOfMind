@@ -15,7 +15,6 @@ AuthDialog::AuthDialog(const QString &userAuthName, const QString &titleText,
     setWindowTitle(titleText);
 
     connect(ui->enterPBtn, &QPushButton::clicked,  this, &AuthDialog::acceptedHandler);
-
 }
 
 QString AuthDialog::getName() const

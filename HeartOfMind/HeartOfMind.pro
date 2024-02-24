@@ -15,7 +15,8 @@ SOURCES += \
     mainwindow.cpp \
     programmsetting.cpp \
     pwdmanager/pwdmanager.cpp \
-    pwdmanager/pwdnote.cpp
+    pwdmanager/pwdnote.cpp \
+    versioncontroller.cpp
 
 HEADERS += \
     core.h \
@@ -23,7 +24,8 @@ HEADERS += \
     mainwindow.h \
     programmsetting.h \
     pwdmanager/pwdmanager.h \
-    pwdmanager/pwdnote.h
+    pwdmanager/pwdnote.h \
+    versioncontroller.h
 
 FORMS += \
     gui/authdialog.ui \
