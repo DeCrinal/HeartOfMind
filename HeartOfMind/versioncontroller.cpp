@@ -1,20 +1,25 @@
 #include "versioncontroller.h"
 
-VersionControl::VersionControl(const QString& filePath) :
-    m_filePath(filePath)
+VersionControl::VersionControl(const QString &filePath) :
+    mFilePath(filePath)
 {
 
 }
 
-bool VersionControl::saveVersion(const QString& content)
+void VersionControl::setAnotherFilePath(const QString &filePath)
 {
-    int version = m_versions.size() + 1;
+    mFilePath = filePath;
+}
+
+bool VersionControl::saveVersion(const QString &content)
+{
+    int version = mVersions.size() + 1;
     return saveVersionToFile(content, version);
 }
 
-bool VersionControl::loadVersion(int version, QString& content)
+bool VersionControl::loadVersion(int version, QString &content)
 {
-    if (version < 1 || version > m_versions.size()) {
+    if (version < 1 || version > mVersions.size()){
         return false;
     }
     return loadVersionFromFile(version, content);
@@ -22,18 +27,18 @@ bool VersionControl::loadVersion(int version, QString& content)
 
 int VersionControl::getCurrentVersion() const
 {
-    return m_versions.size();
+    return mVersions.size();
 }
 
 QStringList VersionControl::getVersionsList() const
 {
-    return m_versions;
+    return mVersions;
 }
 
-bool VersionControl::saveVersionToFile(const QString& content, int version)
+bool VersionControl::saveVersionToFile(const QString &content, int version)
 {
-    QFile file(m_filePath + ".v" + QString::number(version));
-    if (!file.open(QFile::WriteOnly)) {
+    QFile file(mFilePath + ".v" + QString::number(version));
+    if (!file.open(QFile::WriteOnly)){
         return false;
     }
 
@@ -42,14 +47,14 @@ bool VersionControl::saveVersionToFile(const QString& content, int version)
 
     file.close();
 
-    m_versions.append(QDateTime::currentDateTime().toString());
+    mVersions.append(QDateTime::currentDateTime().toString());
     return true;
 }
 
-bool VersionControl::loadVersionFromFile(int version, QString& content)
+bool VersionControl::loadVersionFromFile(int version, QString &content)
 {
-    QFile file(m_filePath + ".v" + QString::number(version));
-    if (!file.open(QFile::ReadOnly)) {
+    QFile file(mFilePath + ".v" + QString::number(version));
+    if (!file.open(QFile::ReadOnly)){
         return false;
     }
 

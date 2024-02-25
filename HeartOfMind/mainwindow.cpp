@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    mAuthDialog = new AuthDialog("Heart of mind",
+                                 QObject::tr("Вход в программу"),
+                                 QObject::tr("Heart of mind\nВведите имя пользователя и пароль"),
+                                 QPixmap(":/images/"));
+    connect(mAuthDialog, &AuthDialog::needAproveSignIn, this, &MainWindow::authDialogHandler);
 }
 
 void MainWindow::setCore(Core *core)
@@ -26,12 +32,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::authorizeHandler()
 {
-    AuthDialog authDialog("Heart of mind",
-                          QObject::tr("Вход в программу"),
-                          QObject::tr("Heart of mind\nВведите имя пользователя и пароль"),
-                          QPixmap(":/images/"));
-    connect(&authDialog, &AuthDialog::needAproveSignIn, this, &MainWindow::authDialogHandler);
-    authDialog.exec();
+    mAuthDialog->exec();
 }
 
 void MainWindow::coreStateChangedHandler()
@@ -45,6 +46,7 @@ void MainWindow::coreStateChangedHandler()
     else if(mCurrentState == MainWindowState::AthorizedApp){
 
     }
+    mAuthDialog->close();
 }
 
 void MainWindow::authDialogHandler(const QString &name, const QString &pwd)

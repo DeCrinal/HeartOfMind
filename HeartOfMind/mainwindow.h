@@ -7,6 +7,7 @@ namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
 class Core;
+class AuthDialog;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -17,6 +18,7 @@ class MainWindow : public QMainWindow
 
     //! Pointer to core.
     Core *mCorePtr {nullptr};
+    AuthDialog *mAuthDialog {nullptr};
 
 public:
     MainWindow(QWidget *parent = nullptr);

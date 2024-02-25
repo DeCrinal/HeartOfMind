@@ -4,6 +4,9 @@
 #include <QApplication>
 #include "mainwindow.h"
 
+#define DEBUG
+
+class PwdManager;
 enum CoreState : uint {
     UnAthorized = 0,
     Athorized = 1,
@@ -26,7 +29,9 @@ public:
     ~Core();
     int start();
     uint getCurrentState() const;
-
+#ifdef DEBUG
+    void testNewFunc();
+#endif
 
 private:
     bool isCorrectHash(const QString &name, const QString &pwd);

@@ -16,6 +16,7 @@ SOURCES += \
     programmsetting.cpp \
     pwdmanager/pwdmanager.cpp \
     pwdmanager/pwdnote.cpp \
+    pwdmanager/pwdstorage.cpp \
     versioncontroller.cpp
 
 HEADERS += \
@@ -25,6 +26,7 @@ HEADERS += \
     programmsetting.h \
     pwdmanager/pwdmanager.h \
     pwdmanager/pwdnote.h \
+    pwdmanager/pwdstorage.h \
     versioncontroller.h
 
 FORMS += \

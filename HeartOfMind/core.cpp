@@ -4,6 +4,11 @@
 #include <QApplication>
 #include <QDebug>
 #include <QMessageBox>
+#include "versioncontroller.h"
+
+//test:
+#include <QJsonObject>
+#include "pwdmanager/pwdnote.h"
 
 Core::Core()
 {
@@ -34,6 +39,19 @@ uint Core::getCurrentState() const
     return mCurrentState;
 }
 
+#ifdef DEBUG
+void Core::testNewFunc()
+{
+    QJsonObject jsonObject = {
+        {"URL:", "https:\\\\github.com"},
+        {"Password", "Not your deal"},
+        {"Username", "DeCrinal"}
+    };
+    PwdNote note;
+    note.setData(jsonObject);
+}
+#endif
+
 bool Core::isCorrectHash(const QString &name, const QString &pwd)
 {
     Q_UNUSED(name)
@@ -52,6 +70,7 @@ void Core::updateWithState()
 {
     if(mCurrentState == CoreState::Athorized){
         mMainWindow->show();
+        testNewFunc();
     }
     if(mCurrentState == CoreState::Prohibited){
         exit(0);

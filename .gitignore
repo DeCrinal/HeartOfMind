@@ -1,0 +1,9 @@
+build-Prototypes-Desktop-Debug/.qmake.stash
+build-Prototypes-Desktop-Debug/Makefile
+build-Prototypes-Desktop-Debug/Prototypes
+build-Prototypes-Desktop-Debug/main.o
+build-Prototypes-Desktop-Debug/mainwindow.o
+build-Prototypes-Desktop-Debug/moc_mainwindow.cpp
+build-Prototypes-Desktop-Debug/moc_mainwindow.o
+build-Prototypes-Desktop-Debug/moc_predefs.h
+build-Prototypes-Desktop-Debug/ui_mainwindow.h
